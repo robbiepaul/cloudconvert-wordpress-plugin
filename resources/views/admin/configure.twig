@@ -1,0 +1,22 @@
+{% set data = session_flashed('__form_data').0 %}
+{% set fd = (data) ? data : fd %}
+<div class="wrap">
+    <h1>CloudConvert settings</h1>
+    {% spaceless %}
+    <form method="post" action="{{ panel_url('WPCloudConvert::configure') }}" novalidate="novalidate">
+
+        <table class="form-table">
+            <tbody>
+            <tr>
+                <th scope="row"><label for="api_key">API Key</label></th>
+                <td><input name="api_key" type="text" id="api_key" aria-describedby="api_key-description" value="{{ fd.api_key }}" class="regular-text">
+                    <p class="description" id="api_key-description">Get your free API Key at <a href="https://cloudconvert.com/" target="_blank">cloudconvert.com</a></p></td>
+            </tr>
+
+            </tbody></table>
+
+        <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
+    </form>
+    {% endspaceless %}
+
+</div>
