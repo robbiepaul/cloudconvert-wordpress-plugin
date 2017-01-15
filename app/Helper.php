@@ -1,5 +1,6 @@
 <?php namespace WPCloudConvert;
 
+
 class Helper {
 
     /**
@@ -32,7 +33,6 @@ class Helper {
         self::$base = self::$base . '/' . basename(plugin_dir_url(__DIR__)) . '/';
 
         self::$config = @require self::$base . '/herbert.config.php';
-
         self::$booted = true;
     }
 
@@ -104,5 +104,7 @@ class Helper {
             substr(self::asset($file), strlen(content_directory()))
         );
     }
+
+
 
 }

@@ -25,7 +25,8 @@ return [
      */
     'requires' => [
         __DIR__ . '/app/customPostTypes.php',
-        __DIR__ . '/app/filters.php'
+        __DIR__ . '/app/filters.php',
+        __DIR__ . '/app/twig.php',
     ],
     
     /**

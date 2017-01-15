@@ -1,0 +1,66 @@
+{% set data = session_flashed('__form_data').0 %}
+{% set fd = (data) ? data : fd %}
+<div class="wrap">
+    <h1>Create a conversion</h1>
+    {% spaceless %}
+        <form method="post" action="" novalidate="novalidate">
+
+            <table class="form-table">
+                <tbody>
+                <tr>
+                    <th scope="row">Filename</th>
+                    <td>{{ filename }}</td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="type">Convert to:</label></th>
+                    <td>
+                        <select name="type" id="type">
+                            <option value="">Please select...</option>
+                            {% for key,val in types %}
+                                <option value="{{ val.outputformat }}">{{ val.outputformat }}</option>
+                            {% endfor %}
+                        </select>
+                        <a href="#" style="padding-left:10px;display: none" class="cc-advanced">Advanced conversion options</a>
+                    </td>
+                </tr>
+                {% for key,val in types %}
+                    {% for opt,optValue in val.converteroptions|toArray  %}
+                        <tr class="cc-option option-{{ val.outputformat }}" style="display:none">
+                            <th scope="row"><label for="{{ val.outputformat }}-{{ opt }}">{{ opt }}</label></th>
+                            <td>
+                                {% if in_array(opt, ['grayscale', 'strip_metatags']) %}
+                                    <input type="checkbox" value="1">
+                                {% else %}
+                                <input type="text" name="converteroptions[{{ val.outputformat }}][{{ opt }}]" value="{{ optValue }}">
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+
+                </tbody></table>
+
+            <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Start conversion"></p>
+        </form>
+    {% endspaceless %}
+
+    <script>
+        jQuery(function($){
+          var $type = $('#type');
+          var $advanced = $('.cc-advanced');
+          $type.on('change', function(){
+            var val = $(this).val();
+            $('.cc-option').hide();
+            if(val) {
+              $advanced.show().on('click', function(){
+                $('.option-'+val).show();
+                $(this).hide();
+              })
+            } else {
+              $advanced.hide();
+            }
+          });
+        });
+    </script>
+
+</div>

@@ -2,6 +2,7 @@
 
 /** @var  \Herbert\Framework\Application $container */
 
-$books = new CPT('book', array(
-    'supports' => array('title')
-));
+$conversion = new CPT('conversion', [
+    'supports' => ['title'],
+    'show_in_menu' => false
+]);

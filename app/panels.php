@@ -16,7 +16,7 @@ $panel->add([
     'type'   => 'panel',
     'as'     => 'mainPanel',
     'title'  => 'CloudConvert',
-    'slug'   => 'cloudconvert-files',
+    'slug'   => 'cloudconvert-conversions',
     'icon'   => Helper::assetUrl('/img/logo.png'),
     'uses'   => function()
     {
@@ -27,10 +27,10 @@ $panel->add([
 $panel->add([
     'type'   => 'sub-panel',
     'parent' => 'mainPanel',
-    'as'     => 'files',
-    'title'  => 'Files',
-    'slug'   => 'cloudconvert-files',
-    'uses'   => __NAMESPACE__ . '\Controllers\FilesController@list'
+    'as'     => 'conversions',
+    'title'  => 'Conversions',
+    'slug'   => 'cloudconvert-conversions',
+    'uses'   => __NAMESPACE__ . '\Controllers\ConversionController@showAll'
 ]);
 
 $panel->add([
@@ -39,7 +39,8 @@ $panel->add([
     'as'     => 'convert',
     'title'  => 'Convert',
     'slug'   => 'cloudconvert-create',
-    'uses'   => __NAMESPACE__ . '\Controllers\ConversionController@create'
+    'uses'   => __NAMESPACE__ . '\Controllers\ConversionController@create',
+    'post'   => __NAMESPACE__.'\Controllers\ConversionController@store',
 ]);
 
 
