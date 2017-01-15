@@ -10,7 +10,7 @@ class AdminController {
     public $optionName = 'cloudconvert_settings';
     protected $options = [ 'api_key' ];
 
-    public function configure()
+    public function settings()
     {
         return view('@WPCloudConvert/admin/configure.twig', ['fd' => get_option( $this->optionName ) ] );
     }
@@ -20,11 +20,11 @@ class AdminController {
         $inputs = $http->only($this->options);
         if ( ! $this->validate($inputs) )
         {
-            return redirect_response( panel_url('WPCloudConvert::configure') )->with('__form_data', $inputs);
+            return redirect_response( panel_url('WPCloudConvert::settings') )->with('__form_data', $inputs);
         }
         update_option($this->optionName, $inputs);
         Notifier::success('Settings have been saved', true);
-        return redirect_response( panel_url('WPCloudConvert::configure') );
+        return redirect_response(panel_url('WPCloudConvert::settings'));
     }
 
     protected function validate($inputs)

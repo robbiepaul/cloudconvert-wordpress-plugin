@@ -1,2 +1,2 @@
 <?php
-//apply_filters ( 'media_row_actions', ['Convert'] );
+add_filter ( 'media_row_actions', 'WPCloudConvert\Controllers\ConversionController::filter', 10, 2);

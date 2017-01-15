@@ -8,7 +8,3 @@
 /** @var  \Herbert\Framework\Shortcode $shortcode */
 /** @var  \Herbert\Framework\Widget $widget */
 
-use Illuminate\Database\Capsule\Manager as Capsule;
-
-Capsule::schema()->dropIfExists('conversions');
-Capsule::schema()->dropIfExists('settings');

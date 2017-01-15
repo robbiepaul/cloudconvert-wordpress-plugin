@@ -4,12 +4,13 @@
   "license": "MIT",
   "require": {
     "getherbert/framework": "~0.9",
-    "cloudconvert/cloudconvert-php": "dev-master"
+    "robbiep/cloudconvert-laravel": "^2.3",
+    "jjgrainger/wp-custom-post-type-class": "^1.4"
   },
   "config": {
     "preferred-install": "dist"
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
       "WPCloudConvert\\": "app/"
